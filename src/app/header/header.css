@@ -1,0 +1,47 @@
+section {
+
+    width: auto;
+    overflow: hidden;
+    height: 80px;
+    padding-left: 22px;
+    padding-right: 22px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+h1{
+    font-family: 'Nohemi';
+    color: #2D274B;
+}
+#button_box{
+    width: 30vw;
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    align-items: center;
+    justify-content: flex-end;
+}
+div{
+    background-color: #9787F3;
+    width: 110px;
+    height: 40px;
+    border-radius: 12px;
+        display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+p{
+    color: #EAEFFE;
+    padding-left: 5px;
+    padding-right: 5px;
+
+
+
+    text-align: center;
+
+    margin: 0px;
+
+
+}

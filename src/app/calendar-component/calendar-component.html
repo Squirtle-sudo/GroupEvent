@@ -1,0 +1,14 @@
+<div class="calendar">
+        {{ today | date: 'MMMM'}}, {{ today | date: "yyyy"}} 
+  <div class="calendar-grid"
+       (mouseup)="onDayMouseUp()"
+       (mouseleave)="onDayMouseUp()">
+    <div *ngFor="let day of days"
+         class="calendar-day"
+         [class.selected]="selectedDays.has(day.getDate())"
+         (mousedown)="onDayMouseDown(day.getDate())"
+         (mouseenter)="onDayMouseEnter(day.getDate())">
+      {{ day | date:"d"}}
+    </div>
+  </div>
+</div>

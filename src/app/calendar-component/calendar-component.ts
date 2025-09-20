@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+
 
 @Component({
-  selector: 'app-calendar',
-  templateUrl: './calendar.html',
-  styleUrls: ['./calendar.css'],
-  imports: [CommonModule]
+  selector: 'app-calendar-component',
+  imports: [CommonModule],
+  templateUrl: './calendar-component.html',
+  styleUrl: './calendar-component.css'
 })
-export class Calendar {
+
+
+export class CalendarComponent{
+
   today = new Date();
-  currentMonth = this.today.getMonth();
-  currentYear = this.today.getFullYear();
-  days: number[] = [];
+  days: Date[] = new Array(35);
   selectedDays: Set<number> = new Set();
   isDragging = false;
   dragStartDay: number | null = null;
@@ -21,9 +23,20 @@ export class Calendar {
     this.generateDays();
   }
 
+
   generateDays() {
-    const daysInMonth = new Date(this.currentYear, this.currentMonth + 1, 0).getDate();
-    this.days = Array.from({ length: daysInMonth }, (_, i) => i + 1);
+    const startDay  = new Date();
+  
+    for (var i = 0; i < this.days.length; i++){
+      var newDate = new Date();
+      newDate.setDate(newDate.getDate() + i);
+      if (i <= 0){
+        this.days[i] = startDay;
+      }
+      else
+        this.days[i] = newDate;
+
+    }
   }
 
   onDayMouseDown(day: number) {
@@ -57,3 +70,4 @@ export class Calendar {
     }
   }
 }
+

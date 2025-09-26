@@ -2,23 +2,42 @@
   width: 350px;
   margin: 20px auto;
 }
+.month{
+  margin-bottom: 10px;
+}
+.day-grid{
+  display: grid;
+  grid-template-columns: repeat(7,47.773px);
+  gap: 4px;
+  margin-bottom: 5px;
+}
+.day-grid > div{
+  text-align: center;
+}
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  
   gap: 4px;
 }
 .calendar-day {
-  background: #f0f0f0;
-  border: 1px solid #ccc;
+  background: #EAEFFE;
   padding: 16px;
   text-align: center;
   cursor: pointer;
   user-select: none;
   transition: background 0.2s;
 }
-
+.calendar-day:hover{
+  background-color: #1803801a;
+}
 .calendar-day.selected {
-  background: #1976d2;
-  color: #fff;
-  border-color: #1976d2;
+  background: #170380;
+  color: #EAEFFE;
+}
+#startingMonth{
+  background-color: #EAEFFE;
+  border: 1px black solid;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }

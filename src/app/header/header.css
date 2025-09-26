@@ -1,7 +1,6 @@
 section {
 
     width: auto;
-    overflow: hidden;
     height: 80px;
     padding-left: 22px;
     padding-right: 22px;
@@ -9,10 +8,15 @@ section {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+
 }
 h1{
     font-family: 'Nohemi';
-    color: #2D274B;
+    color: #170380;
+}
+.button{
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
 #button_box{
     width: 30vw;
@@ -23,14 +27,39 @@ h1{
     justify-content: flex-end;
 }
 div{
-    background-color: #9787F3;
+    /* background-color: #9787F3; */
+    background-color: #170380;
     width: 110px;
     height: 40px;
     border-radius: 12px;
-        display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
 
+}
+#about_button{
+    position:relative;
+
+}
+#about_button > span {
+    display: none;
+    width: 200px;
+    padding: 8px;
+    line-height: 1.6;
+    letter-spacing: 0.6;
+
+}
+#about_button:hover{
+
+    #about-text{
+        display: block;
+        color:#EAEFFE;
+        background-color: #170380;
+        position: absolute;
+        top: 50px;
+              
+    }
+    
 }
 p{
     color: #EAEFFE;

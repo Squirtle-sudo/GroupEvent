@@ -39,6 +39,7 @@ div{
 }
 #about_button{
     position:relative;
+    user-select: none;
 
 }
 #about_button > span {
@@ -54,6 +55,8 @@ div{
     #about-text{
         display: block;
         color:#EAEFFE;
+box-shadow: 6px 8px 16px rgba(0, 0, 0, 0.35);
+
         background-color: #170380;
         position: absolute;
         top: 50px;

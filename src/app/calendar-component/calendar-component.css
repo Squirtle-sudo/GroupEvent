@@ -24,16 +24,18 @@
   background: #EAEFFE;
   padding: 16px;
   text-align: center;
-  cursor: pointer;
   user-select: none;
   transition: background 0.2s;
+  pointer-events: none;
 }
-.calendar-day:hover{
-  background-color: #1803801a;
-}
+
 .calendar-day.selected {
   background: #170380;
   color: #EAEFFE;
+}
+.calendar-day.available{
+  cursor: pointer;
+  pointer-events: all;
 }
 #startingMonth{
   background-color: #EAEFFE;

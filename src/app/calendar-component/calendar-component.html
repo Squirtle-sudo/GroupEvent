@@ -1,17 +1,17 @@
 
 
-<form>
+<!-- <form>
     <label for="startingMonth">Starting Month: </label>
-    <select id ="startingMonth" [formControl]="startingMonth">
-        <option *ngFor="let m of startingMonthOptions" [ngValue]= "m">{{ m | date: 'MMMM' }}</option>
+    <select id ="startingMonth" [(ngModel)] = "startingMonth" [ngModelOptions]="{standalone: true}">
+        <option *ngFor="let m of startingMonthOptions" [value]= "m">{{ m | date: 'MMMM' }}</option>
     </select>
 
-    <p>{{startingMonth.getRawValue()}}</p>
-</form>
+    <p>{{startingMonth}}</p>
+</form> -->
 
 
 <div class="calendar">
-  <div class="month">{{ today | date: 'MMMM'}}, {{ today | date: "yyyy"}}</div>
+  <div class="month">{{ startingMonth | date: 'MMMM'}}, {{ today | date: "yyyy"}}</div>
 
   <div class="day-grid">
     <div *ngFor="let day of days_of_the_week">
@@ -25,6 +25,7 @@
        (mouseleave)="onDayMouseUp()">
     <div *ngFor="let day of days; let i = index"
          class="calendar-day"
+         [class.available]="day!= null"
          [class.selected]="selectDayIndices.has(i)"
          (mousedown)="onDayMouseDown(i)"
          (mouseenter)="onDayMouseEnter(i)">

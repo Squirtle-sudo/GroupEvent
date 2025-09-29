@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, model } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
 
 
 
 @Component({
   selector: 'app-calendar-component',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, ],
   templateUrl: './calendar-component.html',
   styleUrl: './calendar-component.css'
 })
@@ -14,16 +15,19 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms'
 
 export class CalendarComponent{
 
-  startingMonth = new FormControl('');
-  endingMonth = new FormControl('');
+
+
+  // startingMonth = new FormControl('');
+  startingMonth = new Date();
   days_of_the_week: String[] = ['Sun','Mon','Tues','Wed','Thurs','Fri','Sat']
 
   today = new Date();
+
+  todayMonth = 0;
   month = new Date();
 
   startingMonthOptions: Date[] = [];
-  endingMonthOptions: Date[] = [];
-  days: Date[] = new Array(35);
+  days: (Date | null) [] = new Array(35).fill(null);
   selectedDays: number[] = [];
   selectDayIndices: Set<number> = new Set();
   isDragging = false;
@@ -39,6 +43,8 @@ export class CalendarComponent{
       m.setMonth(this.month.getMonth() + i);
       this.startingMonthOptions.push(m)
     }
+    // if (this.startingMonth.valueChanges)
+    //    console.log(this.startingMonth.value)
 
 
     this.generateDays();
@@ -46,12 +52,43 @@ export class CalendarComponent{
 
 
   generateDays() {
+    this.today.setDate(1);
+    this.todayMonth = this.today.getMonth();
     for (var i = 0; i < this.days.length; i++){
-      var newDate = new Date();
-      newDate.setDate(newDate.getDate() + i);
-      this.days[i] = newDate;
-    }
+      if (i < 7){
+        if (i >= this.today.getDay() && (this.todayMonth == this.today.getMonth())){
+          this.days[i] = new Date(this.today);
+          this.today.setDate(this.today.getDate() + 1); 
+        }
+      }
+      else if (this.todayMonth == this.today.getMonth()){
+        this.days[i] = new Date(this.today);
+          this.today.setDate(this.today.getDate() + 1); 
+      }
+
+      // if (i >= this.today.getDay() && i < 7){
+      //   // console.log(newDate.getDate())
+
+      // }
+      // else{
+      //   this.days[i] = this.today;
+      //   this.today.setDate(this.today.getDate() + 1); 
+      // }
+     }
+
+    console.log(this.days)
   }
+
+
+
+  
+  // updateDays(){
+  //    for (var i = 0; i < this.days.length; i++){
+  //     var newDate = new Date();
+  //     newDate.setDate(newDate.getDate() + i);
+  //     this.days[i] = newDate;
+  //   }
+  // }
 
   onDayMouseDown(day: number) {
     this.isDragging = true;
@@ -79,8 +116,9 @@ export class CalendarComponent{
       const end = Math.max(this.dragStartDay, this.dragEndDay);
       this.selectDayIndices = new Set();
       for (let d = start; d <= end; d++) {
-        this.selectDayIndices.add(d);
-        
+        if (this.days[d] != null){
+          this.selectDayIndices.add(d);
+        }
       }
 
     }

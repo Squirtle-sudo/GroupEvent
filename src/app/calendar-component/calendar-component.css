@@ -1,6 +1,15 @@
 .calendar {
-  width: 350px;
+  width: 100%;
+  display: flex;
+  align-items: center;
   margin: 20px auto;
+}
+.current-calendars{
+  display: flex;
+  width: fit-content;
+  
+  margin: 20px auto;
+
 }
 .month{
   margin-bottom: 10px;
@@ -13,7 +22,9 @@
 }
 .day-grid > div{
   text-align: center;
+  user-select: none;
 }
+
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -36,6 +47,12 @@
 .calendar-day.available{
   cursor: pointer;
   pointer-events: all;
+}
+.calendar-day.unavailable{
+  text-decoration: line-through;
+  color: rgba(0, 0, 0, 0.382);
+  user-select: none;
+  pointer-events: none;
 }
 #startingMonth{
   background-color: #EAEFFE;

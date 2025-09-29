@@ -11,31 +11,67 @@
 
 
 <div class="calendar">
-  <div class="month">{{ startingMonth | date: 'MMMM'}}, {{ today | date: "yyyy"}}</div>
-
-  <div class="day-grid">
-    <div *ngFor="let day of days_of_the_week">
-      {{day}}
-    </div>
-  </div>
 
   
-  <div class="calendar-grid"
+
+  
+  <div class="current-calendars">
+    <div id="calendar-1">
+      <div class="month">
+        {{ startingMonth | date: 'MMMM'}}, {{ startingMonth | date: "yyyy"}}
+      </div>
+      <div class="day-grid">
+          <div *ngFor="let day of days_of_the_week">
+            {{day}}
+          </div>
+      </div>
+      <div class="calendar-grid" 
        (mouseup)="onDayMouseUp()"
        (mouseleave)="onDayMouseUp()">
-    <div *ngFor="let day of days; let i = index"
+        <div *ngFor="let day of startingMonthDays; let i = index"
          class="calendar-day"
          [class.available]="day!= null"
+         [class.unavailable]="day!= null && day.getDate() < strikethroughChecker.getDate()"
          [class.selected]="selectDayIndices.has(i)"
          (mousedown)="onDayMouseDown(i)"
          (mouseenter)="onDayMouseEnter(i)">
-        {{ day | date:"d"}}
+          {{day | date:"d"}}
 
 
     
+        </div>
+      </div>
+    </div>
+
+    <div id="calendar-2">
+      <div class="month">
+        {{ endingMonth | date: 'MMMM'}}, {{ endingMonth | date: "yyyy"}}
+      </div>
+      <div class="day-grid">
+        <div *ngFor="let day of days_of_the_week">
+          {{day}}
+        </div>
+      </div>
+      <div class="calendar-grid"
+       (mouseup)="onDayMouseUp()"
+       (mouseleave)="onDayMouseUp()">
+        <div *ngFor="let day of startingMonthDays; let i = index"
+         class="calendar-day"
+         [class.available]="day!= null"
+         [class.unavailable]="day!= null && day.getDate() < strikethroughChecker.getDate()"
+         [class.selected]="selectDayIndices.has(i)"
+         (mousedown)="onDayMouseDown(i)"
+         (mouseenter)="onDayMouseEnter(i)">
+          {{day | date:"d"}}
+
+
+    
+        </div>
+      </div>
     </div>
   </div>
-    <div *ngFor="let key of selectDayIndices">
-  {{ days[key] }}
+    
+    <!-- <div *ngFor="let key of selectDayIndices">
+  {{ days[key] }} -->
 </div>
-</div>
+

@@ -17,17 +17,26 @@ export class CalendarComponent{
 
 
 
-  // startingMonth = new FormControl('');
+  //variables to display the months of the month in the HTML
   startingMonth = new Date();
+  endingMonth = new Date().setMonth(this.startingMonth.getMonth() + 1);
+
+  //array to display sun-sat in the HTML
   days_of_the_week: String[] = ['Sun','Mon','Tues','Wed','Thurs','Fri','Sat']
 
+  //first day of this month and the next
   today = new Date();
+  nextMonthStartingDay = new Date();
 
+
+
+  strikethroughChecker = new Date();
   todayMonth = 0;
   month = new Date();
 
   startingMonthOptions: Date[] = [];
-  days: (Date | null) [] = new Array(35).fill(null);
+  startingMonthDays: (Date | null) [] = new Array(35).fill(null);
+  endingMonthDays: (Date | null) [] = new Array(35).fill(null);
   selectedDays: number[] = [];
   selectDayIndices: Set<number> = new Set();
   isDragging = false;
@@ -52,31 +61,37 @@ export class CalendarComponent{
 
 
   generateDays() {
+    //array for the first month
     this.today.setDate(1);
     this.todayMonth = this.today.getMonth();
-    for (var i = 0; i < this.days.length; i++){
+    for (var i = 0; i < this.startingMonthDays.length; i++){
       if (i < 7){
         if (i >= this.today.getDay() && (this.todayMonth == this.today.getMonth())){
-          this.days[i] = new Date(this.today);
+          this.startingMonthDays[i] = new Date(this.today);
           this.today.setDate(this.today.getDate() + 1); 
         }
       }
       else if (this.todayMonth == this.today.getMonth()){
-        this.days[i] = new Date(this.today);
+        this.startingMonthDays[i] = new Date(this.today);
           this.today.setDate(this.today.getDate() + 1); 
       }
-
-      // if (i >= this.today.getDay() && i < 7){
-      //   // console.log(newDate.getDate())
-
-      // }
-      // else{
-      //   this.days[i] = this.today;
-      //   this.today.setDate(this.today.getDate() + 1); 
-      // }
      }
 
-    console.log(this.days)
+     //array for the second month
+    this.nextMonthStartingDay.setDate(1);
+    this.todayMonth = this.today.getMonth();
+    for (var i = 0; i < this.startingMonthDays.length; i++){
+      if (i < 7){
+        if (i >= this.today.getDay() && (this.todayMonth == this.today.getMonth())){
+          this.startingMonthDays[i] = new Date(this.today);
+          this.today.setDate(this.today.getDate() + 1); 
+        }
+      }
+      else if (this.todayMonth == this.today.getMonth()){
+        this.startingMonthDays[i] = new Date(this.today);
+          this.today.setDate(this.today.getDate() + 1); 
+      }
+     }
   }
 
 
@@ -116,7 +131,7 @@ export class CalendarComponent{
       const end = Math.max(this.dragStartDay, this.dragEndDay);
       this.selectDayIndices = new Set();
       for (let d = start; d <= end; d++) {
-        if (this.days[d] != null){
+        if (this.startingMonthDays[d] != null){
           this.selectDayIndices.add(d);
         }
       }

@@ -1,0 +1,25 @@
+<section>
+    <div class="topbar">
+
+            <input type="text" maxLength=25 placeholder="Event Name" id="eventName" [(ngModel)]="eventName">
+
+            <span id="eventNameSpan"></span>
+            <select id="startingTime" [(ngModel)]="startingTimeChosen" name="startingTimeChosen" (ngModelChange)="updateStartingVariables()">
+                <option disabled selected hidden>{{startingTimeChosen}}</option>
+                <option *ngFor = 'let time of startingTime' >{{time}}</option>
+            </select>
+            <span id="endingTimeSpan"></span>
+            <select id="endingTime"  [(ngModel)]="endingTimeChosen" name="endingTimeChosen" (ngModelChange)="updateEndingVariables()">
+                <option disabled selected hidden>{{endingTimeChosen}}</option>
+                <option value="Ending Time" *ngFor = 'let time of endingTime'>{{time}}</option>
+            </select>
+    </div>
+    <!-- <p>{{startingTimeNum}} </p>
+    <p>{{startingTimeisAm}}</p>
+
+    <p>{{endingTimeNum}} </p>
+    <p>{{endingTimeisAm}}</p> -->
+
+
+
+</section>

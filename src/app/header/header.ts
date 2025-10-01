@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './header.css'
 })
 export class Header {
-  info = 'Invite the bot to your server. \ Add your available dates. \ Share the link. \ Create "Create Event" and elt teh bot do the rest';
+  info = signal('Invite the bot to your server. \ Add your available dates. \ Share the link. \ Create "Create Event" and let the bot do the rest');
 }

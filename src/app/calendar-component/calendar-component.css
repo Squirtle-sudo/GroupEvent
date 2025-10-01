@@ -6,13 +6,18 @@
 }
 .current-calendars{
   display: flex;
-  width: fit-content;
-  
+  gap: 50px;
+  width:fit-content;
   margin: 20px auto;
 
 }
 .month{
-  margin-bottom: 10px;
+  text-align: center;
+  font-weight:500;
+  font-size: 18px;
+  letter-spacing: 1.1px;
+  margin-bottom: 15px;
+
 }
 .day-grid{
   display: grid;

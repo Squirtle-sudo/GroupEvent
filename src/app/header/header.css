@@ -9,27 +9,26 @@ section {
     align-items: center;
     justify-content: space-between;
     position: relative;
+    margin-bottom: 40px;
+    background-color: #170380;
 
 }
 h1{
     font-family: 'Nohemi';
-    color: #170380;
-}
-.button{
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    color: #EAEFFE;
 }
 #button_box{
     width: 30vw;
     display: flex;
     flex-direction: row;
-    gap: 2vw;
     align-items: center;
     justify-content: flex-end;
 }
 div{
     /* background-color: #9787F3; */
-    background-color: #170380;
-    width: 110px;
+
+
+    width: 90px;
     height: 40px;
     border-radius: 12px;
     display: flex;
@@ -54,10 +53,10 @@ div{
 
     #about-text{
         display: block;
-        color:#EAEFFE;
-box-shadow: 6px 8px 16px rgba(0, 0, 0, 0.35);
+        color:#170380;
+        box-shadow: 6px 8px 16px rgba(0, 0, 0, 0.525);
 
-        background-color: #170380;
+        background-color: #EAEFFE;
         position: absolute;
         top: 50px;
               
